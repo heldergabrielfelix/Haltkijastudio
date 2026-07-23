@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Página não encontrada — HALTKIJA Studio</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#04060c; --text-0:#F5F3EC; --text-1:#BEBAAE;
+    --gold:#D9B36A; --gold-soft:#EFC98F;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100vh; background:var(--bg-0); color:var(--text-0);
+    font-family:'Manrope', sans-serif; overflow-x:hidden;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:32px;
+  }
+  #milkyway{
+    position:fixed; inset:-3%; width:106%; height:106%; object-fit:cover; z-index:0;
+    filter:brightness(0.5) saturate(1.05);
+  }
+  #scrim{
+    position:fixed; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(ellipse 70% 60% at 50% 45%, rgba(4,6,12,0.2), rgba(4,6,12,0.82) 100%);
+  }
+  main{position:relative; z-index:2; max-width:520px;}
+  .mark{width:96px; margin-bottom:28px; filter:drop-shadow(0 0 30px rgba(217,179,106,0.3)); opacity:0.9;}
+  .code{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:400;
+    font-size:clamp(70px,14vw,120px); line-height:1; color:var(--gold-soft);
+    text-shadow:0 0 60px rgba(217,179,106,0.25);
+    margin:0;
+  }
+  h1{font-family:'Fraunces', serif; font-weight:500; font-size:26px; margin:18px 0 14px;}
+  p{font-size:15.5px; line-height:1.7; color:var(--text-1); margin:0 0 30px;}
+  a.home{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--gold); text-decoration:none;
+    padding:12px 22px; border:1px solid rgba(217,179,106,0.4); border-radius:999px;
+    transition:background .3s ease, border-color .3s ease;
+  }
+  a.home:hover{background:rgba(217,179,106,0.08); border-color:rgba(217,179,106,0.7);}
+</style>
+</head>
+<body>
+<img id="milkyway" src="milkyway.jpg" alt="" aria-hidden="true" />
+<div id="scrim"></div>
+<main>
+  <img class="mark" src="logo-light.png" alt="" />
+  <p class="code">404</p>
+  <h1>Essa página fugiu como todo gato foge.</h1>
+  <p>Sem aviso, sem explicação — só o vazio entre as estrelas onde ela deveria estar.</p>
+  <a class="home" href="/">← Voltar ao início</a>
+</main>
+</body>
+</html>
