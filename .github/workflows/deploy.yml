@@ -1,0 +1,19 @@
+name: Publicar na Netlify
+
+on:
+  push:
+    branches: [main, teste]
+
+jobs:
+  disparar-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disparar build da branch correta
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "Push na main → publicando PRODUÇÃO (haltkija.com.br)"
+            curl -s -X POST "${{ secrets.NETLIFY_HOOK_MAIN }}"
+          else
+            echo "Push na teste → publicando AMBIENTE DE TESTE (teste--haltkijastudio.netlify.app)"
+            curl -s -X POST "${{ secrets.NETLIFY_HOOK_TESTE }}"
+          fi
