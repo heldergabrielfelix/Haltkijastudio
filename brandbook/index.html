@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HALTKIJA Studio — Brand Guidebook</title>
+<meta name="description" content="Guia da marca HALTKIJA Studio: voz, logo, paleta, tipografia e padrões visuais.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://haltkija.com.br/brandbook/">
+<link rel="icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --noite: #04060c; --marfim: #F5F3EC; --ouro: #D9B36A; --ouro-suave: #EFC98F;
+  --marfim-dourado: #F0E2C3; --gelo: #CFE4FF; --texto-2: #BEBAAE; --texto-3: #8B8778;
+  --verde: #9CC69B; --vermelho: #E0917E;
+  --border: rgba(240,226,195,0.14); --chip: rgba(245,243,236,0.07);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--noite); }
+body {
+  margin: 0; background: var(--noite); color: var(--marfim);
+  font-family: 'Manrope', sans-serif; line-height: 1.6;
+}
+#milkyway {
+  position: fixed; inset: -3%; width: 106%; height: 106%; object-fit: cover; z-index: 0;
+  filter: brightness(0.5) saturate(1.05) contrast(1.05);
+  animation: mw 130s ease-in-out infinite alternate;
+}
+@keyframes mw { 0% { transform: scale(1.04); } 100% { transform: scale(1.12) translate(-1.4%,-1%); } }
+#scrim {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(4,6,12,0.3) 0%, rgba(4,6,12,0.6) 46%, rgba(4,6,12,0.88) 100%);
+}
+#grain {
+  position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+@media (prefers-reduced-motion: reduce) { #milkyway { animation: none; } }
+main { position: relative; z-index: 5; max-width: 980px; margin: 0 auto; padding: 0 28px 120px; }
+
+.capa { min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.capa img { width: clamp(150px, 22vw, 220px); filter: drop-shadow(0 0 34px rgba(217,179,106,0.3)); margin-bottom: 30px; }
+.capa h1 { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(34px, 6vw, 60px); letter-spacing: .1em; margin: 0; }
+.capa .sub { color: var(--texto-2); font-size: 15px; margin-top: 10px; font-style: italic; font-family: 'Fraunces', serif; }
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--ouro); display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 18px;
+}
+.eyebrow::before { content: ""; width: 26px; height: 1px; background: linear-gradient(90deg, var(--ouro), transparent); }
+
+section { padding: 72px 0 0; }
+h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(24px, 3vw, 32px); margin: 0 0 8px; }
+.desc { color: var(--texto-2); font-size: 14.5px; max-width: 640px; margin: 0 0 28px; }
+.desc b { color: var(--ouro); font-weight: 600; }
+
+.glass {
+  position: relative; isolation: isolate; border-radius: 20px; overflow: hidden;
+  background: linear-gradient(150deg, rgba(255,255,255,0.10), rgba(255,255,255,0.025) 45%, rgba(255,255,255,0.01) 65%, rgba(255,255,255,0.05));
+  backdrop-filter: blur(20px) saturate(160%) brightness(1.06);
+  -webkit-backdrop-filter: blur(20px) saturate(160%) brightness(1.06);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.16);
+  padding: 26px;
+}
+.glass::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.45), rgba(255,255,255,0.06) 30%, rgba(217,179,106,0.24) 55%, rgba(207,228,255,0.14) 80%, rgba(255,255,255,0.28));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+}
+.glass > * { position: relative; }
+
+.grid { display: grid; gap: 14px; }
+.grid.c2 { grid-template-columns: 1fr 1fr; }
+.grid.c3 { grid-template-columns: repeat(3, 1fr); }
+.grid.c4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 760px) { .grid.c2, .grid.c3, .grid.c4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 460px) { .grid.c2, .grid.c3, .grid.c4 { grid-template-columns: 1fr; } }
+
+.swatch { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+.swatch .cor { height: 86px; }
+.swatch .info { padding: 10px 14px; background: rgba(12,15,24,0.72); }
+.swatch .nome { font-weight: 700; font-size: 13px; }
+.swatch .hex { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--ouro); }
+.swatch .uso { font-size: 11.5px; color: var(--texto-3); margin-top: 2px; }
+
+.tipo-bloco { padding: 22px 26px; border: 1px solid var(--border); border-radius: 14px; margin-bottom: 14px; background: rgba(12,15,24,0.55); }
+.tipo-bloco .amostra-fraunces { font-family: 'Fraunces', serif; font-weight: 500; font-size: 34px; }
+.tipo-bloco .amostra-manrope { font-size: 15px; color: var(--texto-2); }
+.tipo-bloco .amostra-mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--ouro); }
+.tipo-bloco .meta { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--texto-3); margin-top: 10px; letter-spacing: .06em; }
+
+.demo-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
+.btn-demo {
+  font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: .04em;
+  padding: 11px 22px; border-radius: 12px; cursor: default;
+}
+.btn-demo.primario { background: var(--ouro); color: var(--noite); font-weight: 700; border: none; }
+.btn-demo.secundario { background: rgba(255,255,255,0.06); color: var(--marfim); border: 1px solid var(--border); }
+.badge-demo {
+  font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600;
+  padding: 3px 9px; border-radius: 20px;
+}
+.badge-demo.ouro { background: rgba(217,179,106,0.18); color: var(--ouro); }
+.badge-demo.verde { background: rgba(156,198,155,0.2); color: var(--verde); }
+.badge-demo.vermelho { background: rgba(224,145,126,0.2); color: var(--vermelho); }
+.badge-demo.neutro { background: var(--chip); color: var(--texto-2); }
+
+code, .code {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--marfim-dourado);
+  background: rgba(245,243,236,0.06); border-radius: 6px; padding: 2px 7px;
+}
+pre.code {
+  display: block; padding: 16px 18px; overflow-x: auto; line-height: 1.7;
+  border: 1px solid var(--border); margin: 14px 0 0;
+}
+
+ul.regras { margin: 16px 0 0; padding: 0; list-style: none; }
+ul.regras li { padding: 9px 0 9px 30px; position: relative; font-size: 14px; color: var(--texto-2); border-bottom: 1px solid var(--border); }
+ul.regras li:last-child { border-bottom: none; }
+ul.regras li::before { position: absolute; left: 2px; font-family: 'JetBrains Mono', monospace; }
+ul.regras li.sim::before { content: "✓"; color: var(--verde); }
+ul.regras li.nao::before { content: "✕"; color: var(--vermelho); }
+ul.regras b { color: var(--marfim); }
+
+.voz-frase {
+  font-family: 'Fraunces', serif; font-style: italic; font-size: clamp(19px, 2.6vw, 26px);
+  color: var(--marfim-dourado); text-align: center; padding: 34px 20px; line-height: 1.5;
+}
+.logo-demo { display: flex; align-items: center; justify-content: center; padding: 44px 20px; }
+.logo-demo img { width: 180px; filter: drop-shadow(0 0 30px rgba(217,179,106,0.3)); }
+
+footer { position: relative; z-index: 5; text-align: center; padding: 40px 20px 60px; color: var(--texto-3); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .1em; }
+footer a { color: var(--ouro); text-decoration: none; }
+footer a:hover { color: var(--ouro-suave); }
+.voltar {
+  position: fixed; top: 22px; left: 22px; z-index: 10; font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: .1em; color: var(--texto-2); text-decoration: none;
+  background: rgba(4,6,12,0.55); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border); border-radius: 20px; padding: 7px 15px;
+}
+.voltar:hover { color: var(--ouro); border-color: var(--ouro); }
+@media (max-width: 700px) { .voltar { position: static; display: inline-block; margin: 18px 0 0 22px; } }
+</style>
+</head>
+<body>
+<img id="milkyway" src="../milkyway.webp" alt="" aria-hidden="true">
+<div id="scrim" aria-hidden="true"></div>
+<div id="grain" aria-hidden="true"></div>
+
+<a class="voltar" href="/">← haltkija.com.br</a>
+
+<main>
+
+<div class="capa">
+  <img src="../logo-light.png" alt="HALTKIJA Studio">
+  <h1>BRAND GUIDEBOOK</h1>
+  <div class="sub">v1 · julho de 2026 · haltkija.com.br</div>
+</div>
+
+<section>
+  <span class="eyebrow">01 · Essência</span>
+  <h2>A marca</h2>
+  <p class="desc">O HALTKIJA Studio une <b>profundidade analítica</b> e <b>paixão por produto</b>. A referência é o gato:
+  elegante, preciso, observador. O universo de fundo dá a escala; o dourado dá o toque de ourivesaria.
+  Tudo na marca deve parecer <b>calculado e sereno</b> — nunca apressado, nunca barulhento.</p>
+  <div class="glass">
+    <div class="voz-frase">"Como todo gato: observa primeiro, calcula o salto — e então acerta."</div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">02 · Voz e tom</span>
+  <h2>Como a marca fala</h2>
+  <p class="desc">Português claro, frases curtas, confiança sem arrogância. Explica o difícil com calma
+  e nunca usa hype ("revolucionário", "incrível!!!"). Números são sempre concretos e verificáveis.</p>
+  <div class="glass">
+    <ul class="regras">
+      <li class="sim"><b>Precisa e concreta:</b> "1.843 itens conferidos em quatro fontes" — não "milhares de dados processados"</li>
+      <li class="sim"><b>Serena:</b> pontuação sóbria, sem exclamações em série, sem caps lock de ênfase</li>
+      <li class="sim"><b>Próxima:</b> "você" direto, sem formalidade engessada — mas sem gíria forçada</li>
+      <li class="nao">Hype e superlativo vazio: "o melhor", "único no mercado", "disruptivo"</li>
+      <li class="nao">Jargão sem tradução: se usar termo técnico, explica em seguida</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">03 · Logo</span>
+  <h2>Brasão e wordmark</h2>
+  <p class="desc">O gato no brasão + HALTKIJA STUDIO. A versão oficial é a <b>light</b> (marfim dourado),
+  feita para fundos escuros. O glow dourado é permitido e bem-vindo em telas.</p>
+  <div class="grid c2">
+    <div class="glass logo-demo"><img src="../logo-light.png" alt="Logo Haltkija"></div>
+    <div class="glass">
+      <ul class="regras">
+        <li class="sim">Usar sobre fundos escuros (#04060c ou universo)</li>
+        <li class="sim">Glow dourado: <code>drop-shadow(0 0 34px rgba(217,179,106,.3))</code></li>
+        <li class="sim">Área de respiro: no mínimo a altura do escudo ao redor</li>
+        <li class="nao">Não recolorir, esticar, rotacionar ou aplicar sombra dura</li>
+        <li class="nao">Não usar sobre fundo claro ou colorido (não existe versão dark ainda)</li>
+        <li class="nao">Não separar o gato do escudo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">04 · Cor</span>
+  <h2>Paleta</h2>
+  <p class="desc">Base noturna quase preta, texto marfim, e o dourado como <b>fio condutor</b> — sempre
+  como destaque, nunca como fundo de área grande. O gelo azulado entra só em detalhes finos.</p>
+
+  <div class="grid c3">
+    <div class="swatch"><div class="cor" style="background:#04060c"></div><div class="info"><div class="nome">Noite</div><div class="hex">#04060C</div><div class="uso">fundo principal</div></div></div>
+    <div class="swatch"><div class="cor" style="background:#F5F3EC"></div><div class="info"><div class="nome">Marfim</div><div class="hex">#F5F3EC</div><div class="uso">texto principal</div></div></div>
+    <div class="swatch"><div class="cor" style="background:#D9B36A"></div><div class="info"><div class="nome">Ouro</div><div class="hex">#D9B36A</div><div class="uso">destaques, CTAs, eyebrow</div></div></div>
+    <div class="swatch"><div class="cor" style="background:#EFC98F"></div><div class="info"><div class="nome">Ouro suave</div><div class="hex">#EFC98F</div><div class="uso">hover, gradientes com Ouro</div></div></div>
+    <div class="swatch"><div class="cor" style="background:#F0E2C3"></div><div class="info"><div class="nome">Marfim dourado</div><div class="hex">#F0E2C3</div><div class="uso">brilhos, bordas, código</div></div></div>
+    <div class="swatch"><div class="cor" style="background:#CFE4FF"></div><div class="info"><div class="nome">Gelo</div><div class="hex">#CFE4FF</div><div class="uso">detalhe frio em bordas/brilhos</div></div></div>
+    <div class="swatch"><div class="cor" style="background:#BEBAAE"></div><div class="info"><div class="nome">Cinza quente</div><div class="hex">#BEBAAE</div><div class="uso">texto secundário</div></div></div>
+    <div class="swatch"><div class="cor" style="background:#8B8778"></div><div class="info"><div class="nome">Cinza apagado</div><div class="hex">#8B8778</div><div class="uso">labels, metadados</div></div></div>
+    <div class="swatch"><div class="cor" style="background:linear-gradient(90deg,#9CC69B 50%,#E0917E 50%)"></div><div class="info"><div class="nome">Funcionais</div><div class="hex">#9CC69B · #E0917E</div><div class="uso">positivo / negativo (CRM, status)</div></div></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">05 · Tipografia</span>
+  <h2>Três vozes, três fontes</h2>
+  <p class="desc">Cada fonte tem um papel fixo. Não trocar os papéis entre si e não introduzir uma quarta fonte.</p>
+
+  <div class="tipo-bloco">
+    <div class="amostra-fraunces">Fraunces — a voz elegante</div>
+    <div class="meta">TÍTULOS · NOMES · FRASES DE EFEITO — weight 300–500, itálico permitido em citações</div>
+  </div>
+  <div class="tipo-bloco">
+    <div class="amostra-manrope">Manrope — a voz do dia a dia. Corpo de texto, parágrafos, interfaces. Weight 400–700, tamanho confortável (14–16px).</div>
+    <div class="meta">CORPO · UI · PARÁGRAFOS</div>
+  </div>
+  <div class="tipo-bloco">
+    <div class="amostra-mono">JetBrains Mono — a voz técnica</div>
+    <div class="meta">EYEBROWS · LABELS · NÚMEROS · DADOS — uppercase, letter-spacing .12–.24em, tamanhos pequenos (10–13px)</div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">06 · Padrões visuais</span>
+  <h2>As assinaturas da marca</h2>
+  <p class="desc">Quatro elementos que fazem qualquer peça parecer HALTKIJA:</p>
+
+  <div class="grid c2">
+    <div class="glass">
+      <span class="eyebrow">O eyebrow</span>
+      <p class="desc" style="margin-bottom:0">Linha dourada em gradiente + texto mono em caps espaçado.
+      Abre toda seção, e-mail ou tela. É o "miado" da marca: discreto e inconfundível.</p>
+    </div>
+    <div class="glass">
+      <span class="eyebrow">Liquid glass</span>
+      <p class="desc" style="margin-bottom:10px">Painéis translúcidos com blur e borda em gradiente
+      (branco → ouro → gelo). Este card é um exemplo vivo.</p>
+      <pre class="code">background: linear-gradient(150deg,
+  rgba(255,255,255,.10), rgba(255,255,255,.05));
+backdrop-filter: blur(20px) saturate(160%);
+borda: gradiente branco→ouro→gelo (1px)</pre>
+    </div>
+    <div class="glass">
+      <span class="eyebrow">O universo</span>
+      <p class="desc" style="margin-bottom:0">Via láctea (<code>milkyway.webp</code>) com drift lento de 130s,
+      vinheta escura (scrim) e grain de 4,5%. Em e-mail: versão estática (clientes de e-mail não animam).</p>
+    </div>
+    <div class="glass">
+      <span class="eyebrow">Componentes</span>
+      <div class="demo-row">
+        <button class="btn-demo primario">Ação principal</button>
+        <button class="btn-demo secundario">Secundária</button>
+      </div>
+      <div class="demo-row">
+        <span class="badge-demo ouro">destaque</span>
+        <span class="badge-demo verde">positivo</span>
+        <span class="badge-demo vermelho">atenção</span>
+        <span class="badge-demo neutro">neutro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">07 · Aplicações</span>
+  <h2>Onde a marca vive</h2>
+  <div class="glass">
+    <ul class="regras">
+      <li class="sim"><b>Site (haltkija.com.br):</b> universo animado, hero com logo flutuando, glass em tudo</li>
+      <li class="sim"><b>CRM:</b> mesmo sistema; dourado nos valores, funcionais verde/vermelho nos status</li>
+      <li class="sim"><b>E-mail:</b> universo estático de fundo, card glass rgba(4,6,12,.58) com borda ouro, botão dourado, Georgia como fallback da Fraunces</li>
+      <li class="sim"><b>Assinatura:</b> assinatura.gif + ícone dourado (arquivos servidos pelo site — não remover do repo)</li>
+      <li class="nao">Nunca fundo branco ou colorido chapado em peça da marca</li>
+      <li class="nao">Nunca dourado como cor de fundo de área grande — ele é fio, não tecido</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>HALTKIJA STUDIO · SÃO PAULO · BRAND GUIDEBOOK V1 · 2026<br>
+<a href="/">haltkija.com.br</a></footer>
+</body>
+</html>
