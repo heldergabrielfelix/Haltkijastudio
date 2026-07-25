@@ -134,6 +134,134 @@ ul.regras b { color: var(--marfim); }
 .logo-demo { display: flex; align-items: center; justify-content: center; padding: 44px 20px; }
 .logo-demo img { width: 180px; filter: drop-shadow(0 0 30px rgba(217,179,106,0.3)); }
 
+/* manifesto */
+.manifesto { padding: 44px 40px; text-align: center; }
+.manifesto p {
+  font-family: 'Fraunces', serif; font-size: clamp(17px, 2.2vw, 22px); line-height: 1.65;
+  color: var(--marfim); margin: 0 0 18px;
+}
+.manifesto p:last-child { margin-bottom: 0; }
+.manifesto .destaque { color: var(--marfim-dourado); font-style: italic; }
+
+/* nome / sigla */
+.sigla { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin: 8px 0 22px; }
+.sigla-item { text-align: center; min-width: 76px; }
+.sigla-item .letra {
+  font-family: 'Fraunces', serif; font-size: 30px; font-weight: 500; color: var(--ouro); line-height: 1.1;
+}
+.sigla-item .quem {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .1em;
+  color: var(--texto-3); text-transform: uppercase; margin-top: 4px;
+}
+.sigla-item .quem b { color: var(--texto-2); font-weight: 500; }
+
+/* família */
+.familia { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 6px; }
+@media (max-width: 860px) { .familia { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 460px) { .familia { grid-template-columns: repeat(2, 1fr); } }
+.bicho { text-align: center; }
+.bicho .retrato {
+  width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; margin-bottom: 10px;
+  border: 1px solid rgba(217,179,106,.35); background: rgba(245,243,236,.05);
+  display: flex; align-items: center; justify-content: center; position: relative;
+}
+.bicho .retrato img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2;
+}
+.bicho .retrato:has(img) .inicial { display: none; }
+.bicho .retrato .inicial {
+  font-family: 'Fraunces', serif; font-size: 26px; color: var(--ouro); opacity: .5;
+}
+.bicho .nome { font-family: 'Fraunces', serif; font-size: 15px; color: var(--marfim); }
+.bicho .origem {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .06em;
+  color: var(--texto-3); text-transform: uppercase; margin-top: 3px; line-height: 1.5;
+}
+.bicho.memoria .retrato { border-style: dashed; border-color: rgba(240,226,195,.25); }
+.bicho.memoria .retrato img { filter: grayscale(.55); }
+.bicho.memoria .origem { color: var(--texto-3); font-style: normal; }
+
+/* valores */
+.valor-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.valor-item:last-child { border-bottom: none; }
+.valor-item h3 {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; margin: 0 0 4px; color: var(--marfim);
+}
+.valor-item p { margin: 0; font-size: 13.5px; color: var(--texto-2); }
+
+/* públicos */
+.publico h3 {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 18px; margin: 0 0 2px;
+}
+.publico .quando {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ouro); margin-bottom: 12px;
+}
+.publico .exemplo {
+  font-family: 'Fraunces', serif; font-style: italic; font-size: 14px; color: var(--marfim-dourado);
+  border-left: 2px solid rgba(217,179,106,.4); padding: 4px 0 4px 14px; margin: 12px 0 0;
+}
+
+/* área de segurança e reduções */
+.safe-demo {
+  display: flex; align-items: center; justify-content: center; padding: 30px 20px;
+}
+.safe-box {
+  position: relative; padding: 46px; border: 1px dashed rgba(217,179,106,.45); border-radius: 8px;
+}
+.safe-box img { width: 130px; display: block; }
+.safe-box::after {
+  content: "X"; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ouro); letter-spacing: .1em;
+}
+.reducoes { display: flex; align-items: flex-end; gap: 26px; flex-wrap: wrap; justify-content: center; padding: 26px 10px; }
+.red-item { text-align: center; }
+.red-item img { display: block; margin: 0 auto 8px; }
+.red-item .cap {
+  font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: .08em; color: var(--texto-3);
+}
+.red-item.limite .cap { color: var(--ouro); }
+
+/* usos incorretos */
+.erros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+@media (max-width: 700px) { .erros { grid-template-columns: 1fr 1fr; } }
+.erro-item {
+  border: 1px solid rgba(224,145,126,.3); border-radius: 12px; padding: 16px 12px; text-align: center;
+  background: rgba(224,145,126,0.04);
+}
+.erro-item .palco { height: 74px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.erro-item img { max-height: 62px; max-width: 100%; }
+.erro-item .cap {
+  font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--vermelho);
+  text-transform: uppercase;
+}
+.e-esticado { transform: scaleX(1.55); }
+.e-girado { transform: rotate(-14deg); }
+.e-colorido { filter: hue-rotate(140deg) saturate(4); }
+.e-claro { background: #fff; padding: 6px; border-radius: 4px; }
+.e-sombra { filter: drop-shadow(5px 6px 0 rgba(0,0,0,.85)); }
+.e-borrado { opacity: .3; }
+
+/* co-branding */
+.cobrand {
+  display: flex; align-items: center; justify-content: center; gap: 26px; padding: 30px 20px; flex-wrap: wrap;
+}
+.cobrand img { height: 62px; }
+.cobrand .divisor { width: 1px; height: 46px; background: linear-gradient(180deg, transparent, var(--ouro), transparent); }
+.cobrand .parceiro {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .16em; color: var(--texto-2);
+  border: 1px dashed var(--border); border-radius: 8px; padding: 18px 26px;
+}
+
+/* fotografia */
+.foto-demo { border-radius: 14px; overflow: hidden; height: 150px; position: relative; }
+.foto-demo img { width: 100%; height: 100%; object-fit: cover; }
+.foto-demo .tag {
+  position: absolute; bottom: 10px; left: 12px; font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px; letter-spacing: .1em; color: var(--marfim); background: rgba(4,6,12,.7);
+  padding: 4px 10px; border-radius: 20px;
+}
+
 footer { position: relative; z-index: 5; text-align: center; padding: 40px 20px 60px; color: var(--texto-3); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .1em; }
 footer a { color: var(--ouro); text-decoration: none; }
 footer a:hover { color: var(--ouro-suave); }
@@ -163,18 +291,115 @@ footer a:hover { color: var(--ouro-suave); }
 </div>
 
 <section>
-  <span class="eyebrow">01 · Essência</span>
-  <h2>A marca</h2>
-  <p class="desc">O HALTKIJA Studio une <b>profundidade analítica</b> e <b>paixão por produto</b>. A referência é o gato:
-  elegante, preciso, observador. O universo de fundo dá a escala; o dourado dá o toque de ourivesaria.
-  Tudo na marca deve parecer <b>calculado e sereno</b> — nunca apressado, nunca barulhento.</p>
-  <div class="glass">
-    <div class="voz-frase">"Como todo gato: observa primeiro, calcula o salto — e então acerta."</div>
+  <span class="eyebrow">01 · Manifesto</span>
+  <h2>Por que existimos</h2>
+  <div class="glass manifesto">
+    <p>Todo negócio tem um problema que parece grande demais para o tamanho dele.
+    Uma planilha que ninguém confia. Um processo que só funciona porque alguém lembra.
+    Um dado que existe em quatro lugares e não bate em nenhum.</p>
+    <p>Grandes empresas resolvem isso com times e orçamentos. As outras convivem com o problema
+    até ele virar prejuízo — ou multa.</p>
+    <p class="destaque">O HALTKIJA Studio existe para encurtar essa distância.</p>
+    <p>Tecnologia e IA para resolver o problema de verdade — não para impressionar em apresentação.
+    Números conferidos, não estimados. Entrega que funciona sozinha depois que a gente sai.</p>
+    <p>E um jeito de trabalhar que a gente aprendeu com gato:
+    <span class="destaque">observar primeiro, calcular o salto — e então acertar.</span></p>
   </div>
 </section>
 
 <section>
-  <span class="eyebrow">02 · Voz e tom</span>
+  <span class="eyebrow">02 · Essência</span>
+  <h2>Missão, visão e valores</h2>
+  <div class="grid c2">
+    <div class="glass">
+      <span class="eyebrow">Missão</span>
+      <p class="desc" style="margin-bottom:22px">Resolver problemas reais de negócio com tecnologia e IA —
+      com honestidade, precisão e velocidade.</p>
+      <span class="eyebrow">Visão</span>
+      <p class="desc" style="margin-bottom:0">Que o tamanho da empresa deixe de definir a qualidade dos
+      sistemas que ela pode ter.</p>
+    </div>
+    <div class="glass">
+      <span class="eyebrow">Valores</span>
+      <div class="valor-item">
+        <h3>Honestidade antes do negócio</h3>
+        <p>Dizer o que é, mesmo quando não favorece a venda. Se não vale a pena, a gente fala.</p>
+      </div>
+      <div class="valor-item">
+        <h3>Resolver, não relatar</h3>
+        <p>Entrega é sistema funcionando, não diagnóstico bonito do problema.</p>
+      </div>
+      <div class="valor-item">
+        <h3>Precisão verificável</h3>
+        <p>Todo número tem origem e pode ser conferido. Nada de "cerca de", "milhares de".</p>
+      </div>
+      <div class="valor-item">
+        <h3>Rápido, sem correria</h3>
+        <p>Aprender e entregar rápido é uma vantagem. Atropelar o cliente não é.</p>
+      </div>
+      <div class="valor-item">
+        <h3>Generosidade</h3>
+        <p>Sempre há espaço para ajudar quem não poderia pagar. Isso não é exceção — é parte do trabalho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">03 · O nome</span>
+  <h2>HALTKIJA é uma família</h2>
+  <p class="desc">O nome não veio de branding: veio de casa. É a inicial de cada um que mora aqui —
+  uma pessoa e cinco gatos, quatro deles resgatados da rua ou de ninhadas que precisaram de lugar.</p>
+  <div class="glass">
+    <div class="sigla">
+      <div class="sigla-item"><div class="letra">H</div><div class="quem"><b>Helder</b></div></div>
+      <div class="sigla-item"><div class="letra">A</div><div class="quem"><b>Arya</b></div></div>
+      <div class="sigla-item"><div class="letra">L</div><div class="quem"><b>Lucca</b></div></div>
+      <div class="sigla-item"><div class="letra">T</div><div class="quem"><b>Tifa</b></div></div>
+      <div class="sigla-item"><div class="letra">KI</div><div class="quem"><b>Kira</b></div></div>
+      <div class="sigla-item"><div class="letra">JA</div><div class="quem"><b>Janus</b></div></div>
+    </div>
+    <p class="desc" style="margin:0 auto 24px;text-align:center;max-width:620px">
+      Os nomes vêm de <b>games</b> e séries: Arya de Game of Thrones, Tifa de Final Fantasy VII,
+      Lucca e Janus de Chrono Trigger — que aparece duas vezes, e não por acaso: é o jogo favorito da casa.
+    </p>
+
+    <div class="familia">
+      <div class="bicho">
+        <div class="retrato"><img src="../gatos/arya.jpg" style="object-position:center 30%" alt="Arya" onerror="this.remove()"><span class="inicial">A</span></div>
+        <div class="nome">Arya</div><div class="origem">Game of Thrones</div>
+      </div>
+      <div class="bicho">
+        <div class="retrato"><img src="../gatos/lucca.jpg" style="object-position:center 24%" alt="Lucca" onerror="this.remove()"><span class="inicial">L</span></div>
+        <div class="nome">Lucca</div><div class="origem">Chrono Trigger</div>
+      </div>
+      <div class="bicho">
+        <div class="retrato"><img src="../gatos/tifa.jpg" style="object-position:58% 10%" alt="Tifa" onerror="this.remove()"><span class="inicial">T</span></div>
+        <div class="nome">Tifa</div><div class="origem">Final Fantasy VII</div>
+      </div>
+      <div class="bicho">
+        <div class="retrato"><img src="../gatos/kira.jpg" style="object-position:center 26%" alt="Kira" onerror="this.remove()"><span class="inicial">K</span></div>
+        <div class="nome">Kira</div><div class="origem">&nbsp;</div>
+      </div>
+      <div class="bicho">
+        <div class="retrato"><img src="../gatos/janus.jpg" style="object-position:center 22%" alt="Janus" onerror="this.remove()"><span class="inicial">J</span></div>
+        <div class="nome">Janus</div><div class="origem">Chrono Trigger</div>
+      </div>
+      <div class="bicho memoria">
+        <div class="retrato"><img src="../gatos/billy.jpg" style="object-position:center 28%" alt="Billy Billy" onerror="this.remove()"><span class="inicial">B</span></div>
+        <div class="nome">Billy Billy</div><div class="origem">2004 — 2019</div>
+      </div>
+    </div>
+
+    <p class="desc" style="margin:24px auto 0;text-align:center;max-width:600px">
+      <b>Billy Billy</b> veio antes de todos e ficou quinze anos.
+      Toda casa que já teve um cachorro assim carrega ele pra sempre.
+    </p>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">04 · Voz e tom</span>
   <h2>Como a marca fala</h2>
   <p class="desc">Português claro, frases curtas, confiança sem arrogância. Explica o difícil com calma
   e nunca usa hype ("revolucionário", "incrível!!!"). Números são sempre concretos e verificáveis.</p>
@@ -190,27 +415,118 @@ footer a:hover { color: var(--ouro-suave); }
 </section>
 
 <section>
-  <span class="eyebrow">03 · Logo</span>
-  <h2>Brasão e wordmark</h2>
-  <p class="desc">O gato no brasão + HALTKIJA STUDIO. A versão oficial é a <b>light</b> (marfim dourado),
-  feita para fundos escuros. O glow dourado é permitido e bem-vindo em telas.</p>
+  <span class="eyebrow">05 · Tom de voz</span>
+  <h2>Uma voz, três públicos</h2>
+  <p class="desc">O tom base não muda — o que muda é a profundidade técnica e o que se assume como sabido.</p>
+  <div class="grid c3">
+    <div class="glass publico">
+      <h3>Cliente</h3>
+      <div class="quando">proposta · entrega · suporte</div>
+      <p class="desc" style="margin-bottom:0">Traduz o técnico para o impacto no negócio dele. Números concretos,
+      próximo passo sempre explícito. Nunca deixa o cliente sem saber o que acontece agora.</p>
+      <p class="exemplo">"1.843 itens conferidos em quatro fontes — as 263 DIs do Termo de Fiscalização
+      estão cobertas. Falta você validar 28 produtos novos."</p>
+    </div>
+    <div class="glass publico">
+      <h3>Parceiro</h3>
+      <div class="quando">fornecedor · indicação · colega</div>
+      <p class="desc" style="margin-bottom:0">Direto e horizontal. Pode usar o vocabulário da área sem traduzir tudo.
+      Combina prazo e escopo com clareza, sem formalidade de contrato em cada frase.</p>
+      <p class="exemplo">"Consigo entregar a integração até quinta. Se o endpoint mudar, me avisa que eu ajusto."</p>
+    </div>
+    <div class="glass publico">
+      <h3>Público</h3>
+      <div class="quando">site · linkedin · brandbook</div>
+      <p class="desc" style="margin-bottom:0">Mais autoral e reflexivo. Aqui cabe metáfora e uma frase bonita —
+      desde que sustentada por trabalho real logo em seguida.</p>
+      <p class="exemplo">"Como todo gato: observa primeiro, calcula o salto — e então acerta."</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">06 · Logo</span>
+  <h2>O conceito</h2>
+  <p class="desc">Brasão é o símbolo de uma <b>família</b> — e é exatamente isso que o nome carrega.
+  O gato sentado, de perfil sereno, não está pulando: está <b>observando</b>. É a postura que define
+  o jeito de trabalhar do estúdio, e é o retrato de quem mora em casa.</p>
   <div class="grid c2">
     <div class="glass logo-demo"><img src="../logo-light.png" alt="Logo Haltkija"></div>
     <div class="glass">
       <ul class="regras">
-        <li class="sim">Usar sobre fundos escuros (#04060c ou universo)</li>
-        <li class="sim">Glow dourado: <code>drop-shadow(0 0 34px rgba(217,179,106,.3))</code></li>
-        <li class="sim">Área de respiro: no mínimo a altura do escudo ao redor</li>
-        <li class="nao">Não recolorir, esticar, rotacionar ou aplicar sombra dura</li>
-        <li class="nao">Não usar sobre fundo claro ou colorido (não existe versão dark ainda)</li>
-        <li class="nao">Não separar o gato do escudo</li>
+        <li class="sim"><b>Escudo:</b> família, proteção, herança — o que se assina embaixo</li>
+        <li class="sim"><b>Gato sentado:</b> cálculo antes da ação, precisão sem pressa</li>
+        <li class="sim"><b>Marfim dourado:</b> ourivesaria, cuidado artesanal no acabamento</li>
+        <li class="sim"><b>Wordmark serifada:</b> permanência — não é marca de moda</li>
       </ul>
     </div>
   </div>
 </section>
 
 <section>
-  <span class="eyebrow">04 · Cor</span>
+  <span class="eyebrow">07 · Regras de uso</span>
+  <h2>Como aplicar o logo</h2>
+  <p class="desc">A versão oficial é a <b>light</b> (marfim dourado), feita para fundos escuros.
+  O glow dourado é permitido e bem-vindo em telas.</p>
+
+  <div class="grid c2">
+    <div class="glass">
+      <span class="eyebrow">Área de segurança</span>
+      <div class="safe-demo">
+        <div class="safe-box"><img src="../logo-light.png" alt="Área de segurança"></div>
+      </div>
+      <p class="desc" style="margin-bottom:0;text-align:center">
+        <b>X</b> = a altura do escudo. Nenhum elemento, texto ou borda invade essa margem.
+      </p>
+    </div>
+    <div class="glass">
+      <span class="eyebrow">Reduções</span>
+      <div class="reducoes">
+        <div class="red-item"><img src="../logo-light.png" width="120" alt=""><div class="cap">120 PX · IDEAL</div></div>
+        <div class="red-item"><img src="../logo-light.png" width="72" alt=""><div class="cap">72 PX</div></div>
+        <div class="red-item limite"><img src="../logo-light.png" width="44" alt=""><div class="cap">44 PX · MÍNIMO</div></div>
+      </div>
+      <p class="desc" style="margin-bottom:0;text-align:center">
+        Abaixo de 44 px o gato perde definição. Para ícones e favicon, use apenas o
+        <b>escudo</b> (<code>favicon.png</code>) — nunca o logo inteiro reduzido.
+      </p>
+    </div>
+  </div>
+
+  <p class="desc" style="margin-top:26px">Usos incorretos — nenhum destes é aceitável:</p>
+  <div class="erros">
+    <div class="erro-item"><div class="palco"><img class="e-esticado" src="../logo-light.png" alt=""></div><div class="cap">Distorcer</div></div>
+    <div class="erro-item"><div class="palco"><img class="e-girado" src="../logo-light.png" alt=""></div><div class="cap">Rotacionar</div></div>
+    <div class="erro-item"><div class="palco"><img class="e-colorido" src="../logo-light.png" alt=""></div><div class="cap">Recolorir</div></div>
+    <div class="erro-item"><div class="palco"><img class="e-claro" src="../logo-light.png" alt=""></div><div class="cap">Fundo claro</div></div>
+    <div class="erro-item"><div class="palco"><img class="e-sombra" src="../logo-light.png" alt=""></div><div class="cap">Sombra dura</div></div>
+    <div class="erro-item"><div class="palco"><img class="e-borrado" src="../logo-light.png" alt=""></div><div class="cap">Baixo contraste</div></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">08 · Co-branding</span>
+  <h2>Convivência com outras marcas</h2>
+  <p class="desc">Em proposta, entrega ou material conjunto, o logo do cliente vem <b>à esquerda</b>
+  (posição de anfitrião) e o HALTKIJA à direita, separados por um fio dourado.
+  Alturas ópticas equivalentes — nunca o nosso maior que o do cliente.</p>
+  <div class="glass">
+    <div class="cobrand">
+      <div class="parceiro">LOGO DO CLIENTE</div>
+      <div class="divisor"></div>
+      <img src="../logo-light.png" alt="Haltkija Studio">
+    </div>
+    <ul class="regras">
+      <li class="sim">Fundo neutro escuro quando houver dois logos — o universo só quando a peça for só nossa</li>
+      <li class="sim">Se o logo do cliente for claro/colorido, manter o nosso em marfim dourado sobre fundo escuro</li>
+      <li class="nao">Nunca sobrepor os dois logos, nem criar um "logo combinado"</li>
+      <li class="nao">Nunca aplicar o glow dourado do nosso sobre a marca do cliente</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">09 · Cor</span>
   <h2>Paleta</h2>
   <p class="desc">Base noturna quase preta, texto marfim, e o dourado como <b>fio condutor</b> — sempre
   como destaque, nunca como fundo de área grande. O gelo azulado entra só em detalhes finos.</p>
@@ -229,7 +545,7 @@ footer a:hover { color: var(--ouro-suave); }
 </section>
 
 <section>
-  <span class="eyebrow">05 · Tipografia</span>
+  <span class="eyebrow">10 · Tipografia</span>
   <h2>Três vozes, três fontes</h2>
   <p class="desc">Cada fonte tem um papel fixo. Não trocar os papéis entre si e não introduzir uma quarta fonte.</p>
 
@@ -248,7 +564,7 @@ footer a:hover { color: var(--ouro-suave); }
 </section>
 
 <section>
-  <span class="eyebrow">06 · Padrões visuais</span>
+  <span class="eyebrow">11 · Padrões visuais</span>
   <h2>As assinaturas da marca</h2>
   <p class="desc">Quatro elementos que fazem qualquer peça parecer HALTKIJA:</p>
 
@@ -289,7 +605,29 @@ borda: gradiente branco→ouro→gelo (1px)</pre>
 </section>
 
 <section>
-  <span class="eyebrow">07 · Aplicações</span>
+  <span class="eyebrow">12 · Estilo fotográfico</span>
+  <h2>Que imagem é HALTKIJA</h2>
+  <p class="desc">A imagem de marca é <b>escura, profunda e silenciosa</b>. Céu, espaço, texturas naturais —
+  nada de banco de imagens com pessoas sorrindo apontando para gráficos.</p>
+  <div class="grid c2">
+    <div class="glass" style="padding:0;overflow:hidden">
+      <div class="foto-demo"><img src="../milkyway.webp" alt="Referência: céu profundo"><span class="tag">CÉU PROFUNDO · A REFERÊNCIA</span></div>
+    </div>
+    <div class="glass">
+      <ul class="regras">
+        <li class="sim">Escuro predominante, com um ponto de luz quente</li>
+        <li class="sim">Espaço, céu noturno, texturas orgânicas, gatos</li>
+        <li class="sim">Sempre com scrim escuro por cima para o texto respirar</li>
+        <li class="nao">Stock corporativo: aperto de mão, reunião genérica, seta subindo</li>
+        <li class="nao">Fundo branco estourado ou cores saturadas dominando</li>
+        <li class="nao">Filtro colorido que brigue com o dourado</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">13 · Aplicações</span>
   <h2>Onde a marca vive</h2>
   <div class="glass">
     <ul class="regras">
