@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacidade · HALTKIJA Studio</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Manrope:wght@400;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--void:#04060c;--ink:#F5F3EC;--ink-2:#BEBAAE;--gold:#D9B36A;--gold-soft:#EFC98F;--line:rgba(240,226,195,.14);color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--ink);font:400 16px/1.7 'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:720px;margin:0 auto;padding:72px max(20px,env(safe-area-inset-right,0px)) 96px max(20px,env(safe-area-inset-left,0px))}
+.back{font:500 11.5px 'JetBrains Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none}
+h1{font:400 clamp(36px,5vw,54px)/1.05 'Fraunces',Georgia,serif;margin:28px 0 8px;letter-spacing:-.015em}
+h2{font:400 24px/1.2 'Fraunces',Georgia,serif;margin:40px 0 8px;color:var(--gold-soft)}
+p,li{color:var(--ink-2)}
+a{color:var(--gold-soft)}
+.upd{font:500 12px 'JetBrains Mono',monospace;color:var(--ink-2)}
+button{font:600 14px 'Manrope',sans-serif;border-radius:99px;padding:10px 18px;cursor:pointer;border:1px solid var(--gold);background:transparent;color:var(--ink);margin-top:8px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:4px}
+.pending{color:var(--gold-soft);border-bottom:1px dashed var(--gold)}
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="index.html">← Voltar ao site</a>
+  <h1>Privacidade</h1>
+  <p class="upd">Atualizada em novembro de 2026</p>
+
+  <h2>Quem cuida dos dados</h2>
+  <p>HALTKIJA Studio Ltda., São Paulo, representada por Helder Gabriel Felix. Dúvidas ou pedidos sobre seus dados: <a href="mailto:heldergabrielfelix@gmail.com">heldergabrielfelix@gmail.com</a>.</p>
+
+  <h2>O que este site coleta</h2>
+  <ul>
+    <li><b>Contagem de visitas (Google Analytics):</b> só funciona se você tocar em “Aceitar” no aviso de cookies. Mede páginas vistas, tempo na página, tipo de aparelho e cidade aproximada. Não identifica você pelo nome.</li>
+    <li><b>Sua escolha sobre cookies e movimento:</b> fica guardada no seu próprio navegador, para o aviso não voltar a cada visita.</li>
+    <li><b>Mensagens que você enviar</b> por LinkedIn, e-mail ou WhatsApp: usadas só para responder e conversar sobre o projeto.</li>
+  </ul>
+
+  <h2>O que não fazemos</h2>
+  <p>Não vendemos dados, não usamos para anúncios e não fazemos cadastro neste site.</p>
+
+  <h2>Base legal e prazo</h2>
+  <p>A contagem de visitas depende do seu consentimento (LGPD, art. 7º, I), que você pode retirar a qualquer momento. As mensagens de contato são tratadas para atender o seu pedido (art. 7º, V) e guardadas pelo tempo da conversa e do projeto.</p>
+
+  <h2>Seus direitos</h2>
+  <p>Você pode pedir acesso, correção ou exclusão dos seus dados, e saber com quem foram compartilhados (LGPD, art. 18). O Google Analytics é operado pelo Google; veja a <a href="https://policies.google.com/privacy?hl=pt-BR" target="_blank" rel="noopener">política do Google</a>.</p>
+
+  <h2>Mudar sua escolha de cookies</h2>
+  <p>Toque abaixo para apagar a escolha. O aviso volta quando você abrir o site de novo.</p>
+  <button type="button" id="limpar">Apagar minha escolha</button>
+  <p id="ok" hidden>Escolha apagada.</p>
+</main>
+<script>
+document.getElementById('limpar').onclick = () => { try { localStorage.removeItem('hk-consent'); } catch (e) {} document.getElementById('ok').hidden = false; };
+</script>
+</body>
+</html>
