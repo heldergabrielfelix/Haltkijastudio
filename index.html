@@ -155,18 +155,28 @@ section>.wrap{width:100%}
 #missoes .head{display:grid;grid-template-columns:1fr 1fr;gap:24px 60px;align-items:end}
 #missoes .head .lede{margin:0;justify-self:end}
 @media (max-width:900px){#missoes .head{grid-template-columns:1fr}#missoes .head .lede{justify-self:start}}
-.missions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:52px}
-.mission{background:rgba(8,10,18,.72);border:1px solid var(--line);border-radius:18px;padding:10px 10px 26px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);min-width:0;transition:border-color .3s,transform .3s}
-.mission:hover{border-color:rgba(217,179,106,.45);transform:translateY(-3px)}
-.scene{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:#0a0c14 url(milkyway.webp) center/cover}
-.scene::before{content:"";position:absolute;inset:0;background:var(--tint)}
-.scene>*{position:relative}
-.mission .txt{padding:22px 16px 0}
+/* trabalhos: duas colunas largas (Lusion) com as telas soltas no espaço (Active Theory), sem caixa em volta */
+.missions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px 48px;margin-top:64px}
+.mission{min-width:0}
+.scene{position:relative;aspect-ratio:16/11;display:grid;place-items:center;perspective:1000px;background:none}
+.scene::before{content:"";position:absolute;inset:4% 8%;background:var(--tint);-webkit-mask:radial-gradient(closest-side,#000 0%,transparent 100%);mask:radial-gradient(closest-side,#000 0%,transparent 100%);opacity:.9;pointer-events:none}
+.scene::after{content:"";position:absolute;left:22%;right:22%;bottom:3%;height:9%;border-radius:50%;background:radial-gradient(closest-side,rgba(217,179,106,.12),transparent);filter:blur(8px);pointer-events:none}
+.scene>*{position:relative;z-index:1;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.7,.2,1);animation:boia 7s ease-in-out infinite}
+.mission:nth-child(2n) .scene>*{animation-delay:-3.5s}
+.mission:nth-child(3n) .scene>*{animation-duration:8.5s}
+@keyframes boia{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.scene .win{width:84%;font-size:13px;box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 1px rgba(240,226,195,.06)}
+.scene .win .h,.scene .cols>div>span,.scene .flow-note{font-size:11.5px}
+.scene .game{width:64%}
+.scene .phone{width:30%}
+.scene .orbit3d{width:42%}
+.mission .txt{padding:26px 0 0;max-width:46ch;text-shadow:0 1px 18px rgba(4,6,12,.9),0 0 2px rgba(4,6,12,.8)}
 .mission .kind{margin:0;font:italic 400 17px/1.3 var(--f-display);color:var(--gold)}
-.mission h3{margin-top:6px;font-size:clamp(22px,2vw,26px)}
-.mission .txt p:last-child{margin:10px 0 0;color:var(--ink-2);font-size:16.5px}
-@media (max-width:980px){.missions{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:640px){.missions{grid-template-columns:1fr}}
+.mission h3{margin-top:6px;font-size:clamp(26px,2.6vw,34px)}
+.mission .txt p:last-child{margin:10px 0 0;color:var(--ink-2);font-size:17px}
+@media (max-width:760px){.missions{grid-template-columns:1fr;gap:56px}.mission .txt{padding-top:16px}}
+@media (prefers-reduced-motion:reduce){.scene>*{animation:none}}
+.sem-mov .scene>*{animation-play-state:paused}
 
 /* telas desenhadas em código dentro das cenas */
 .win{width:78%;background:rgba(10,12,20,.82);border:1px solid rgba(240,226,195,.18);border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,.55);font:500 11px/1.4 var(--f-body);color:var(--ink-2);overflow:hidden;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
@@ -263,9 +273,36 @@ footer{background:rgba(4,6,12,.88);border-top:1px solid rgba(217,179,106,.3)}
   *{transition:none!important;animation:none!important}
   .js .reveal.out{transform:none;opacity:1}
 }
+/* ---------- tela de entrada: o clique libera o som (o navegador não deixa antes) ---------- */
+.portao{display:none}
+.portao-on .portao{display:grid}
+.portao{position:fixed;inset:0;z-index:50;place-items:center;padding:24px;background:rgba(4,6,12,.84);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center;transition:opacity .7s ease,visibility .7s}
+.portao.saindo{opacity:0;visibility:hidden}
+.portao .in{display:flex;flex-direction:column;align-items:center;max-width:420px}
+.portao img{width:clamp(110px,11vw,138px);filter:drop-shadow(0 0 30px rgba(217,179,106,.3))}
+.portao p{margin:26px 0 30px;font:italic 400 clamp(22px,2.2vw,26px)/1.35 var(--f-display);color:var(--ink)}
+.portao .com{display:inline-flex;align-items:center;gap:12px;padding:15px 30px;border:1px solid var(--gold);border-radius:2px;background:rgba(4,6,12,.35);color:var(--ink);font:500 17px var(--f-body);cursor:pointer;transition:background .25s,color .25s}
+.portao .com:hover{background:var(--gold);color:#140f05}
+.portao .eq{display:inline-flex;align-items:flex-end;gap:2px;height:14px}
+.portao .eq i{width:2px;height:4px;background:var(--gold);animation:eq 1.1s ease-in-out infinite}
+.portao .com:hover .eq i{background:#140f05}
+.portao .com .eq i:nth-child(2){animation-delay:-.4s}
+.portao .com .eq i:nth-child(3){animation-delay:-.75s}
+.portao .sem{margin-top:18px;background:none;border:0;padding:8px 4px;color:var(--ink-2);font:400 16px var(--f-body);cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:5px}
+.portao .sem:hover{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.portao .com .eq i{animation:none}}
 </style>
+<script>try { if (!sessionStorage.getItem('hk-entrou')) document.documentElement.classList.add('portao-on'); } catch (e) { document.documentElement.classList.add('portao-on'); }</script>
 </head>
 <body>
+<div class="portao" id="portao" role="dialog" aria-modal="true" aria-labelledby="portao-txt">
+  <div class="in">
+    <img src="logo-light.png" alt="HALTKIJA Studio">
+    <p id="portao-txt">Este site tem trilha sonora.</p>
+    <button type="button" class="com" id="entrar-som"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>Entrar com som</button>
+    <button type="button" class="sem" id="entrar-mudo">Entrar sem som</button>
+  </div>
+</div>
 <picture>
   <source srcset="milkyway.webp" type="image/webp">
   <img id="milkyway" src="milkyway.jpg" alt="" aria-hidden="true">
@@ -349,7 +386,7 @@ footer{background:rgba(4,6,12,.88);border-top:1px solid rgba(217,179,106,.3)}
               </div>
             </div>
           </div>
-          <div class="txt"><p class="kind">Artepaper · indústria</p><h3>Classificação fiscal NCM</h3><p>Sistema que apoia a classificação de cada produto na tabela NCM e guarda o histórico de cada decisão.</p></div>
+          <div class="txt"><p class="kind">Importadora de papel</p><h3>Classificação fiscal NCM</h3><p>Sistema que apoia a classificação de cada produto na tabela NCM e guarda o histórico de cada decisão.</p></div>
         </article>
         <article class="mission reveal">
           <div class="scene" style="--tint:linear-gradient(200deg,rgba(40,50,90,.5),rgba(4,6,12,.6));background-position:70% 30%">
@@ -630,10 +667,10 @@ const planeta = (() => {
   const V = (x, y, z) => new THREE.Vector3(x, y, z);
   const tomadas = celular ? [
     [V(0, 18, 74), V(0, 84, 0)], [V(0, 30, 210), V(0, -10, 0)], [V(0, 20, 420), V(70, 150, 0)],
-    [V(-150, -10, 170), V(0, 20, 0)], [V(0, 240, 120), V(0, 0, 0)], [V(0, 20, 520), V(0, 150, 0)]
+    [V(0, 10, 380), V(0, 320, 0)], [V(0, 240, 120), V(0, 0, 0)], [V(0, 20, 520), V(0, 150, 0)]
   ] : [
     [V(0, 20, 72), V(0, 64, 0)], [V(0, 12, 195), V(-88, 2, 0)], [V(90, 55, 215), V(58, 0, 0)],
-    [V(-150, -12, 150), V(0, 22, 0)], [V(30, 230, 90), V(-55, 0, 0)], [V(0, 15, 460), V(120, 140, 0)]
+    [V(0, 10, 320), V(0, 300, 0)], [V(30, 230, 90), V(-55, 0, 0)], [V(0, 15, 460), V(120, 140, 0)]
   ];
   const secoes = [...document.querySelectorAll('[data-shot]')];
   const ease = t => t * t * (3 - 2 * t);
@@ -687,7 +724,7 @@ const planeta = (() => {
   const GESTOS = ['click', 'keydown', 'touchend'];
   const soltar = () => GESTOS.forEach(t => removeEventListener(t, primeiro, true));
   const tocar = () => { audio.volume = 0; return audio.play().then(() => { tocando = true; pintar(); rampa(ALVO); }); };
-  function primeiro(e) { if (btn.contains(e.target) || !ligado || tocando) return; tocar().then(soltar).catch(() => {}); }
+  function primeiro(e) { if (btn.contains(e.target) || (e.target.closest && e.target.closest('#portao')) || !ligado || tocando) return; tocar().then(soltar).catch(() => {}); }
   GESTOS.forEach(t => addEventListener(t, primeiro, true));
   btn.addEventListener('click', () => {
     soltar();
@@ -696,7 +733,50 @@ const planeta = (() => {
     if (ligado) tocar().catch(() => { ligado = false; pintar(); });
     else { tocando = false; pintar(); rampa(0, () => audio.pause()); }
   });
+  // tela de entrada: a escolha vale para o som e o clique já libera o áudio
+  const portao = document.getElementById('portao');
+  if (document.documentElement.classList.contains('portao-on')) {
+    document.documentElement.style.overflow = 'hidden'; if (typeof lenis !== 'undefined' && lenis) lenis.stop();
+    const entrar = comSom => {
+      soltar(); ligado = comSom; try { localStorage.setItem('hk-som', comSom ? 'on' : 'off'); sessionStorage.setItem('hk-entrou', '1'); } catch (e) {}
+      pintar(); if (comSom) tocar().catch(() => {});
+      portao.classList.add('saindo'); document.documentElement.style.overflow = '';
+      if (typeof lenis !== 'undefined' && lenis && !parado) lenis.start();
+      setTimeout(() => { document.documentElement.classList.remove('portao-on'); portao.remove(); }, 750);
+    };
+    document.getElementById('entrar-som').addEventListener('click', () => entrar(true));
+    document.getElementById('entrar-mudo').addEventListener('click', () => entrar(false));
+    portao.addEventListener('keydown', e => { if (e.key === 'Escape') entrar(false); });
+    document.getElementById('entrar-som').focus({ focusVisible: false });
+  } else portao.remove();
   document.addEventListener('visibilitychange', () => { if (!tocando) return; if (document.hidden) audio.pause(); else audio.play().catch(() => {}); });
+  pintar();
+})();
+
+/* ---------- trabalhos: telas giram de leve com a rolagem e seguem o mouse ---------- */
+(() => {
+  const cenas = [...document.querySelectorAll('.mission .scene')];
+  if (!cenas.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const mouse = new Map();
+  const pintar = () => {
+    document.documentElement.classList.toggle('sem-mov', parado);
+    const h = innerHeight;
+    for (const c of cenas) {
+      const r = c.getBoundingClientRect(); if (r.bottom < -200 || r.top > h + 200) continue;
+      const centro = (r.top + r.height / 2 - h / 2) / h;           // -1 em cima, 1 embaixo
+      const m = mouse.get(c) || [0, 0];
+      const rx = parado ? 0 : Math.max(-14, Math.min(14, centro * 16)) + m[1] * -6;
+      const ry = parado ? 0 : (c.closest('.mission').matches(':nth-child(2n)') ? -7 : 7) * (1 - Math.min(1, Math.abs(centro))) + m[0] * 8;
+      const tela = c.firstElementChild; tela.style.setProperty('--rx', rx.toFixed(2) + 'deg'); tela.style.setProperty('--ry', ry.toFixed(2) + 'deg');
+    }
+  };
+  let pedido = false; const agendar = () => { if (!pedido) { pedido = true; requestAnimationFrame(() => { pedido = false; pintar(); }); } };
+  for (const c of cenas) {
+    c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); mouse.set(c, [(e.clientX - r.left) / r.width - .5, (e.clientY - r.top) / r.height - .5]); agendar(); });
+    c.addEventListener('pointerleave', () => { mouse.delete(c); agendar(); });
+  }
+  addEventListener('scroll', agendar, { passive: true }); addEventListener('resize', agendar);
+  botaoMov.addEventListener('click', agendar);
   pintar();
 })();
 
