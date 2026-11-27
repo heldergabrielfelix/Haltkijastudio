@@ -93,9 +93,9 @@ nav.menu a.talk:hover{color:var(--ink);border-bottom-color:var(--gold-soft)}
 .sound:hover{color:var(--ink)}
 .sound .eq{display:inline-flex;align-items:flex-end;gap:2px;height:14px}
 .sound .eq i{width:2px;height:4px;background:var(--gold);transition:height .3s}
-.sound[aria-pressed="true"] .eq i{animation:eq 1.1s ease-in-out infinite}
-.sound[aria-pressed="true"] .eq i:nth-child(2){animation-delay:-.4s}
-.sound[aria-pressed="true"] .eq i:nth-child(3){animation-delay:-.75s}
+.sound.tocando .eq i{animation:eq 1.1s ease-in-out infinite}
+.sound.tocando .eq i:nth-child(2){animation-delay:-.4s}
+.sound.tocando .eq i:nth-child(3){animation-delay:-.75s}
 @keyframes eq{0%,100%{height:4px}50%{height:14px}}
 @media (max-width:760px){
   header.top .wrap{height:72px}
@@ -677,18 +677,27 @@ const planeta = (() => {
   return { quadro };
 })();
 
-/* ---------- som ambiente: só toca depois do clique ---------- */
+/* ---------- som ambiente: já vem ligado e começa no primeiro clique ou tecla (o navegador não deixa antes) ---------- */
 (() => {
   const btn = document.getElementById('som'), audio = document.getElementById('trilha'), ALVO = 0.35;
-  let ligado = false, fade = null;
+  let ligado = true, tocando = false, fade = null;
+  try { if (localStorage.getItem('hk-som') === 'off') ligado = false; } catch (e) {}
   const rampa = (para, depois) => { clearInterval(fade); fade = setInterval(() => { const v = audio.volume + (para > audio.volume ? 0.02 : -0.02); if ((para > audio.volume && v >= para) || (para <= audio.volume && v <= para)) { audio.volume = Math.max(0, Math.min(1, para)); clearInterval(fade); if (depois) depois(); } else audio.volume = Math.max(0, Math.min(1, v)); }, 60); };
-  const pintar = () => { btn.setAttribute('aria-pressed', ligado); btn.setAttribute('aria-label', ligado ? 'Desligar som ambiente' : 'Ligar som ambiente'); };
+  const pintar = () => { btn.setAttribute('aria-pressed', ligado); btn.setAttribute('aria-label', ligado ? 'Desligar som ambiente' : 'Ligar som ambiente'); btn.classList.toggle('tocando', tocando); };
+  const GESTOS = ['click', 'keydown', 'touchend'];
+  const soltar = () => GESTOS.forEach(t => removeEventListener(t, primeiro, true));
+  const tocar = () => { audio.volume = 0; return audio.play().then(() => { tocando = true; pintar(); rampa(ALVO); }); };
+  function primeiro(e) { if (btn.contains(e.target) || !ligado || tocando) return; tocar().then(soltar).catch(() => {}); }
+  GESTOS.forEach(t => addEventListener(t, primeiro, true));
   btn.addEventListener('click', () => {
-    ligado = !ligado; pintar();
-    if (ligado) { audio.volume = 0; audio.play().then(() => rampa(ALVO)).catch(() => { ligado = false; pintar(); }); }
-    else rampa(0, () => audio.pause());
+    soltar();
+    ligado = !ligado; try { localStorage.setItem('hk-som', ligado ? 'on' : 'off'); } catch (e) {}
+    pintar();
+    if (ligado) tocar().catch(() => { ligado = false; pintar(); });
+    else { tocando = false; pintar(); rampa(0, () => audio.pause()); }
   });
-  document.addEventListener('visibilitychange', () => { if (!ligado) return; if (document.hidden) audio.pause(); else audio.play().catch(() => {}); });
+  document.addEventListener('visibilitychange', () => { if (!tocando) return; if (document.hidden) audio.pause(); else audio.play().catch(() => {}); });
+  pintar();
 })();
 
 /* ---------- laço único ---------- */
