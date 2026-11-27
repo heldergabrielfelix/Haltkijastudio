@@ -222,6 +222,11 @@ section>.wrap{width:100%}
 @media (prefers-reduced-motion:reduce){.orbit3d i,.game b{animation:none}}
 
 /* trajetória */
+.bio{margin-top:28px}
+.bio p{margin:0 0 18px;color:var(--ink-2);font-size:18px;text-shadow:0 1px 18px rgba(4,6,12,.9),0 0 2px rgba(4,6,12,.8)}
+.bio p:first-child{color:var(--ink)}
+.rota{display:flex;flex-wrap:wrap;gap:6px 0;margin:30px 0 0;padding-top:18px;border-top:1px solid var(--line);font:italic 400 17px/1.4 var(--f-display);color:var(--gold)}
+.rota span+span::before{content:"→";margin:0 12px;color:var(--ink-3);font-style:normal}
 .timeline{list-style:none;margin:36px 0 0;padding:0;background:var(--panel);border-top:1px solid var(--gold);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .timeline li{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:22px 26px;border-bottom:1px solid var(--line)}
 .timeline li:last-child{border-bottom:0}
@@ -443,12 +448,13 @@ footer{background:rgba(4,6,12,.88);border-top:1px solid rgba(217,179,106,.3)}
       <div class="col reveal">
         <p class="kicker">Quem conduz</p>
         <h2>Helder <em>Felix</em></h2>
-        <ol class="timeline">
-          <li><time>2025 – hoje</time><div><b>Product Manager · Editora Abril</b><p>Estratégia e IA aplicada ao portfólio de produtos digitais e à otimização de processos internos.</p></div></li>
-          <li><time>2024 – 2025</time><div><b>Executive MBA · Impacta</b><p>Product Management e Business Agility.</p></div></li>
-          <li><time>2022 – 2025</time><div><b>Product Owner Sênior · Editora Abril</b><p>Portfólio de 14 aplicativos mobile em React Native.</p></div></li>
-          <li><time>2018 – 2022</time><div><b>Product Owner · Pravy</b><p>36 aplicativos e sites para os shoppings do grupo BRMalls.</p></div></li>
-        </ol>
+        <div class="bio">
+          <p>Comecei do lado de quem vende e de quem produz: orçamento de gráfica, cliente no telefone, prazo apertado. Cheguei a ter uma pequena produtora gráfica. Foi ali que aprendi que um bom projeto começa entendendo o que o cliente precisa resolver, e não só o que ele pediu.</p>
+          <p>Em 2018 entrei em produto digital na Pravy, fazendo apps e sites para os shoppings do grupo BRMalls. Eram muitos projetos ao mesmo tempo, e eu ficava no meio: do briefing até o ar, traduzindo o pedido do cliente para design e tecnologia e trazendo de volta o que dava para entregar.</p>
+          <p>Desde 2022 estou na Editora Abril. Comecei cuidando dos aplicativos das revistas e hoje conduzo a estratégia de produtos digitais, ligando produto, tecnologia, dados e negócio. Nos últimos anos o centro virou IA aplicada: assistentes e agentes que ajudam a redação e as áreas internas, com regra clara e resultado medido.</p>
+          <p>O HALTKIJA é onde levo esse jeito de trabalhar para empresas que não têm um time de produto. Eu entendo o problema com calma, desenho a solução e entrego o sistema funcionando.</p>
+        </div>
+        <p class="rota"><span>Produção gráfica e vendas</span><span>Pravy, 2018</span><span>Editora Abril, 2022</span><span>HALTKIJA Studio</span></p>
       </div>
     </div>
   </section>
